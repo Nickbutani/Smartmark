@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: rgb(55, 61, 73);
+    padding: 0.4rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-family: 'source sans pro', helvetica neue, Helvetica, Arial, sans-serif;
+}
+.container {
+ 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+.nav-menu {
+    display: flex;
+    list-style-type: none;
+}
+.nav-item {
+    /* margin-left: 1rem; */
+    position: relative;
+}
+.nav-link {
+    color: rgb(160, 170, 191);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    background-color: #141415;
+    color: aquamarine;
+}
+.nav-link i {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #141415;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: #d4d3d3;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 13px;
+}
+.dropdown-content a:hover {
+    background-color: #424242;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #ebecee;
+        padding: 1rem;
+    }
+    .nav-menu.active {
+        display: flex;
+    }
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    .dropdown-content {
+        position: static;
+        display: none;
+        box-shadow: none;
+        padding-left: 1rem;
+    }
+    .dropdown.active .dropdown-content {
+        display: block;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .editor-container {
+        flex-direction: column;
+    }
+    .slider {
+        width: 100%;
+        height: 10px;
+        cursor: row-resize;
+    }
+}
+
+/* Editor styles */
+.editor-container {
+    display: flex;
+    height: calc(100vh - 60px);
+    position: relative;
+}
+.editor-pane {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+}
+.line-numbers {
+    width: 40px;
+    background-color: #f0f0f0;
+    padding: 10px 5px;
+    text-align: right;
+    font-family: monospace;
+    font-size: 14px;
+    color: #999;
+    user-select: none;
+    overflow-y: hidden;
+    line-height: 1.5;
+}
+#editor {
+    flex: 1;
+    padding: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    border: none;
+    resize: none;
+}
+.preview-pane {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #fff;
+}
+.slider {
+    width: 10px;
+    background-color: #ccc;
+    cursor: col-resize;
+}
+
+/* Style specifically for the #preview container */
+
+/* List styling within the preview */
+#preview ul, #preview ol {
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+#preview li {
+    margin-bottom: 8px;
+}
+
+#preview ul li {
+    list-style-type: disc;
+}
+
+#preview ol li {
+    list-style-type: decimal;
+}
+
+/* Table styling */
+#preview table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+#preview table th, #preview table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#preview table th {
+    background-color: #f4f4f4;
+}
+
+/* Code block styling */
+
+
+/* Add padding for better readability inside the preview */
+#preview {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    overflow-y: auto;
+}
+
+/* Headings inside the preview */
+#preview h1, #preview h2, #preview h3, #preview h4, #preview h5, #preview h6 {
+    margin: 10px 0;
+}
+
+#preview p, #preview li {
+    margin-bottom: 10px;
+}
+
+/* Ensure line breaks are handled properly */
+#preview p, #preview li {
+    line-height: 1.6;
+}
+
+/* Ensure the #preview text is formatted properly */
+#preview {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 60px;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.document-btn {
+    background: none;
+    border: none;
+    margin-bottom: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #555;
+}
+
+.document-btn.active {
+    background-color: #000;
+    padding: 10px px;
+    border-radius: 10px 0 0 10px;
+    color: #fff;
+}

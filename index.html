@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags for Character Set and Viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page Title -->
+    <title>Markdown Editor</title>
+    
+    <!-- External Libraries and Stylesheets -->
+    <script src="https://kit.fontawesome.com/b15cd79f79.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/docx@7.1.0/build/index.js"></script>
+</head>
+<body>
+    <!-- Introductory Message -->
+    <div class="intro-message" id="intro-message">
+        <h1>SMARTMARK</h1>
+        <p>Your Smart Markdown Editor</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <span class="logo">SMARTMARK</span>
+        </div>
+
+        <div class="navbar-center">
+            <!-- Dark Mode Toggle Switch -->
+            <label class="toggle-switch">
+                <input type="checkbox" id="dark-mode-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="navbar-right">
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" id="mobile-menu-btn">☰</button>
+            <ul class="nav-menu" id="nav-menu">
+                <!-- Export Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Export as <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#" id="export-pdf">PDF</a>
+                        <!-- <a href="#" id="export-doc">Word</a> -->
+                        <a href="#" id="export-html">HTML</a>
+                    </div>
+                </li>
+                <!-- Import Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Import <i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#"><label for="import-md">Device</label></a>
+                        <input type="file" id="import-md" accept=".md" style="display: none;">
+                    </div>
+                </li>
+                <!-- Download Button -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="download-md" aria-label="Download"><i class="fas fa-download"></i> Download</a>
+                </li>
+                <!-- New Document Button -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link" id="new-document"><i class="fas fa-file-alt"></i> New Document</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Document Button -->
+    <button class="document-btn" id="document-btn">
+        <i class="fas fa-file-alt" id="document-icon-symbol"></i>
+    </button>
+
+    <!-- Modal Popup for New Document -->
+    <div id="new-document-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <h2>Create a New Document</h2>
+            <input type="text" id="document-name" name="document-name" placeholder="Enter document name">
+            <button id="create-document-button" class="primary-button">Create</button>
+        </div>
+    </div>
+
+    <!-- Document List -->
+    <ul id="document-list" class="document-list" style="display: none;"></ul>
+
+    <!-- Main Content Area -->
+    <div class="main-content">
+        <!-- Document Bar -->
+        <div class="document-bar" id="document-bar">
+            <div class="current-document" id="current-document">
+                <h3>Document name</h3>
+                <span id="document-name-text"></span>
+                <input id="document-name-input" type="text" value="" style="display: none;" />
+            </div>
+            <div class="trash-icon">
+                <i class="fas fa-trash" id="delete-document"></i>
+            </div>
+        </div>
+
+        <!-- Editor and Preview Container -->
+        <div class="editor-container">
+            <!-- Editor Section -->
+            <div class="editor">
+                <div class="editor-header">
+                    <h3 class="editor-title" id="editor-title">Markdown</h3>
+                    <a href="#" class="fullscreen" id="fullscreen-editor">
+                        <i class="fa-solid fa-expand" id="editor-expand-icon"></i>
+                    </a>
+                </div>
+                <div id="editor"></div> <!-- Ace Editor container -->
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview">
+                <div class="preview-header">
+                    <h3 class="preview-title" id="editor-title">Preview</h3>
+                    <a href="#" class="fullscreen" id="fullscreen-preview">
+                        <i class="fa-solid fa-expand" id="preview-expand-icon"></i>
+                    </a>
+                </div>
+                <div class="preview-content" id="preview-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.13/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
