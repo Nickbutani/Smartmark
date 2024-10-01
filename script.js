@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isFirstVisit = localStorage.getItem('firstVisit') !== 'false';
     if (isFirstVisit) {
-        introMessage.style.display = 'block';
+        introMessage.style.display = 'flex';
         setTimeout(() => {
             introMessage.classList.add('fade-out');
             setTimeout(() => {
